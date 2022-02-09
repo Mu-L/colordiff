@@ -73,17 +73,20 @@ my $color_mode       = undef;
 my $color_patch      = undef;
 
 # Locations for personal and system-wide colour configurations
-my $HOME   = $ENV{HOME};
+my $HOME = (grep { defined && length }
+        @ENV{qw/HOME USERPROFILE/})[0] || '';
 my $etcdir = '/etc';
 my ($setting, $value);
 my @config_files = ("$etcdir/colordiffrc");
-if (defined $ENV{XDG_CONFIG_HOME} && $ENV{XDG_CONFIG_HOME} ne '') {
-    push (@config_files, "$ENV{XDG_CONFIG_HOME}/colordiff/colordiffrc")
+my $USER_CONFIG_DIR = (grep { defined && length }
+        @ENV{qw/XDG_CONFIG_HOME LOCALAPPDATA APPDATA/})[0] || '';
+if (length $USER_CONFIG_DIR) {
+    push (@config_files, "${USER_CONFIG_DIR}/colordiff/colordiffrc")
 }
-elsif (defined $ENV{HOME}) {
-    push (@config_files, "$ENV{HOME}/.config/colordiff/colordiffrc")
+elsif (length $HOME) {
+    push (@config_files, "${HOME}/.config/colordiff/colordiffrc")
 }
-push (@config_files, "$ENV{HOME}/.colordiffrc") if (defined $ENV{HOME});
+push (@config_files, "${HOME}/.colordiffrc") if length $HOME;
 my $config_file;
 my $diff_type = 'unknown';
 

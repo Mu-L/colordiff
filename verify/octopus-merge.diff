@@ -1,0 +1,55 @@
+commit addafaf92eeb86033da91323d0d3ad7a496dae83
+Merge: 6b94f1e404 93b74bca86 ea726d02e9 b33aba5184 6b1ddbdd6e
+Author: Junio C Hamano <junkio@cox.net>
+Date:   Sat Jan 28 00:16:09 2006 -0800
+
+    Merge lt/revlist,jc/diff,jc/revparse,jc/abbrev
+
+diff --cc diff-tree.c
+index efa2b9476e,efa2b9476e,99c580cf75,efa2b9476e,44bc2381c9..6593a6920a
+--- a/diff-tree.c
++++ b/diff-tree.c
+@@@@@@ -79,12 -79,12 -82,16 -79,12 -80,12 +83,16 @@@@@@ static const char *generate_header(cons
+     	offset = sprintf(this_header, "%s%s ",
+     			 header_prefix,
+     			 diff_unique_abbrev(commit_sha1, abbrev));
+-- --	offset += sprintf(this_header + offset, "(from %s)\n",
+-- --			 parent_sha1 ?
+-- --			 diff_unique_abbrev(parent_sha1, abbrev) : "root");
+-- - 	offset += pretty_print_commit(commit_format, msg, len,
+++ ++	if (commit_sha1 != parent_sha1)
+++ ++		offset += sprintf(this_header + offset, "(from %s)\n",
+++ ++				  parent_sha1
+++ ++				  ? diff_unique_abbrev(parent_sha1, abbrev)
+++ ++				  : "root");
+++ ++	else
+++ ++		offset += sprintf(this_header + offset, "(from parents)\n");
+  -  	offset += pretty_print_commit(commit_format, msg, len,
+++++ 	offset += pretty_print_commit(commit_format, commit, len,
+     				      this_header + offset,
+---- 				      sizeof(this_header) - offset);
+++++ 				      sizeof(this_header) - offset, abbrev);
+     	return this_header;
+     }
+     
+@@@@@@ -108,8 -108,8 -115,17 -108,8 -109,8 +116,16 @@@@@@ static int diff_tree_commit(const unsig
+     	}
+     
+     	/* More than one parent? */
+-- --	if (ignore_merges && commit->parents && commit->parents->next)
+-- --		return 0;
+++ ++	if (commit->parents && commit->parents->next) {
+++ ++		if (ignore_merges)
+++ ++			return 0;
+++ ++		else if (combine_merges) {
+  -  			header = generate_header(sha1, sha1,
+  -  						 commit->buffer);
++++++			header = generate_header(sha1, sha1, commit);
+++ ++			return diff_tree_combined_merge(sha1, header,
+++ ++							show_empty_combined,
+++ ++							dense_combined_merges);
+++ ++		}
+++ ++	}
+     
+     	for (parents = commit->parents; parents; parents = parents->next) {
+     		struct commit *parent = parents->item;

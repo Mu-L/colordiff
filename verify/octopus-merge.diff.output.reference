@@ -1,0 +1,55 @@
+[1;37mcommit addafaf92eeb86033da91323d0d3ad7a496dae83[0;0m
+[1;37mMerge: 6b94f1e404 93b74bca86 ea726d02e9 b33aba5184 6b1ddbdd6e[0;0m
+[1;37mAuthor: Junio C Hamano <junkio@cox.net>[0;0m
+[1;37mDate:   Sat Jan 28 00:16:09 2006 -0800[0;0m
+[1;37m[0;0m
+    Merge lt/revlist,jc/diff,jc/revparse,jc/abbrev[0;0m
+[1;37m[0;0m
+[1;32mdiff --cc diff-tree.c[0;0m
+[1;32mindex efa2b9476e,efa2b9476e,99c580cf75,efa2b9476e,44bc2381c9..6593a6920a[0;0m
+[1;31m--- a/diff-tree.c[0;0m
+[1;34m+++ b/diff-tree.c[0;0m
+[1;35m@@@@@@ -79,12 -79,12 -82,16 -79,12 -80,12 +83,16 @@@@@@ static const char *generate_header(cons[0;0m
+     	offset = sprintf(this_header, "%s%s ",[0;0m
+     			 header_prefix,[0;0m
+     			 diff_unique_abbrev(commit_sha1, abbrev));[0;0m
+[1;31m-- --	offset += sprintf(this_header + offset, "(from %s)\n",[0;0m
+[1;31m-- --			 parent_sha1 ?[0;0m
+[1;31m-- --			 diff_unique_abbrev(parent_sha1, abbrev) : "root");[0;0m
+[1;31m-- - 	offset += pretty_print_commit(commit_format, msg, len,[0;0m
+[1;34m++ ++	if (commit_sha1 != parent_sha1)[0;0m
+[1;34m++ ++		offset += sprintf(this_header + offset, "(from %s)\n",[0;0m
+[1;34m++ ++				  parent_sha1[0;0m
+[1;34m++ ++				  ? diff_unique_abbrev(parent_sha1, abbrev)[0;0m
+[1;34m++ ++				  : "root");[0;0m
+[1;34m++ ++	else[0;0m
+[1;34m++ ++		offset += sprintf(this_header + offset, "(from parents)\n");[0;0m
+[1;31m  -  	offset += pretty_print_commit(commit_format, msg, len,[0;0m
+[1;34m++++ 	offset += pretty_print_commit(commit_format, commit, len,[0;0m
+     				      this_header + offset,[0;0m
+[1;31m---- 				      sizeof(this_header) - offset);[0;0m
+[1;34m++++ 				      sizeof(this_header) - offset, abbrev);[0;0m
+     	return this_header;[0;0m
+     }[0;0m
+     [0;0m
+[1;35m@@@@@@ -108,8 -108,8 -115,17 -108,8 -109,8 +116,16 @@@@@@ static int diff_tree_commit(const unsig[0;0m
+     	}[0;0m
+     [0;0m
+     	/* More than one parent? */[0;0m
+[1;31m-- --	if (ignore_merges && commit->parents && commit->parents->next)[0;0m
+[1;31m-- --		return 0;[0;0m
+[1;34m++ ++	if (commit->parents && commit->parents->next) {[0;0m
+[1;34m++ ++		if (ignore_merges)[0;0m
+[1;34m++ ++			return 0;[0;0m
+[1;34m++ ++		else if (combine_merges) {[0;0m
+[1;31m  -  			header = generate_header(sha1, sha1,[0;0m
+[1;31m  -  						 commit->buffer);[0;0m
+[1;34m+++++			header = generate_header(sha1, sha1, commit);[0;0m
+[1;34m++ ++			return diff_tree_combined_merge(sha1, header,[0;0m
+[1;34m++ ++							show_empty_combined,[0;0m
+[1;34m++ ++							dense_combined_merges);[0;0m
+[1;34m++ ++		}[0;0m
+[1;34m++ ++	}[0;0m
+     [0;0m
+     	for (parents = commit->parents; parents; parents = parents->next) {[0;0m
+     		struct commit *parent = parents->item;[0;0m

@@ -6,11 +6,11 @@
 [1;31m--- colordiff.pl	6 Mar 2003 13:41:12 -0000	1.4.2.2[0;0m
 [1;34m+++ colordiff.pl	18 Mar 2003 10:56:09 -0000[0;0m
 [1;35m@@ -30,7 +30,7 @@[0;0m
-[1;37m use strict;[0;0m
-[1;37m [0;0m
-[1;37m my $app_name     = 'colordiff';[0;0m
+ use strict;[0;0m
+ [0;0m
+ my $app_name     = 'colordiff';[0;0m
 [1;31m-my $version      = '1.0.1';[0;0m
 [1;34m+my $version      = '1.0.2';[0;0m
-[1;37m my $author       = 'Dave Ewart';[0;0m
-[1;37m my $author_email = 'davee@sungate.co.uk';[0;0m
-[1;37m my $app_www      = 'http://colordiff.sourceforge.net/';[0;0m
+ my $author       = 'Dave Ewart';[0;0m
+ my $author_email = 'davee@sungate.co.uk';[0;0m
+ my $app_www      = 'http://colordiff.sourceforge.net/';[0;0m

@@ -514,6 +514,7 @@ if ($diff_type eq 'diffy') {
     }
 }
 # ------------------------------------------------------------------------------
+my $count_marks = 1;
 
 while (defined( $_ = @inputstream ? shift @inputstream : ($lastline and <$inputhandle>) )) {
     if (/^Binary files (.*) and (.*) differ$/) {
@@ -589,19 +590,23 @@ while (defined( $_ = @inputstream ? shift @inputstream : ($lastline and <$inputh
         elsif (/^\+\+\+ /) {
             print "$file_new";
         }
-        elsif (/^-/) {
-            print "$file_old";
+        elsif (/^([-\+ ]{$count_marks})/) {
+            my $diff_marks = $1;
+            if ($diff_marks =~ /-/) {
+                print $file_old;
+            }
+            elsif ($diff_marks =~ /\+/) {
+                print $file_new;
+            }
         }
-        elsif (/^\+/) {
-            print "$file_new";
-        }
-        elsif (/^\@/) {
+        elsif (/^(\@+)/) {
+            $count_marks = length($1) - 1;
             print "$diff_stuff";
         }
         elsif (/^Only in/) {
             print "$diff_file";
         }
-        elsif (/^(Index: |={4,}|RCS file: |retrieving |diff )/) {
+        elsif (/^(Index: |={4,}|RCS file: |retrieving |diff |old |new |deleted |copy |rename |similarity |dissimilarity |index |reverted:$|unchanged:$|only in patch2:$)/) {
             print "$cvs_stuff";
         }
         else {

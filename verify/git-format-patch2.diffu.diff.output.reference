@@ -14,8 +14,8 @@
 [1;37m[0;0m
 [1;32mdiff --git a/CHANGES b/CHANGES[0;0m
 [1;32mindex baf3854..fcd9013 100644[0;0m
-[1;31m--- a/CHANGES[0;0m
-[1;34m+++ b/CHANGES[0;0m
+[1;35m--- a/CHANGES[0;0m
+[1;35m+++ b/CHANGES[0;0m
 [1;35m@@ -108,5 +108,9 @@ Support for xz in cdiff, patch by Ville Skytt[0;0m
  patch to provide custom diff command from Rainer Nagel.  Improved wdiff support[0;0m
  inspired by patch from Peter van Dijk.  Improved debdiff detection.[0;0m
@@ -28,8 +28,8 @@
  [0;0m
 [1;32mdiff --git a/Makefile b/Makefile[0;0m
 [1;32mindex 18e71e5..be3dbae 100644[0;0m
-[1;31m--- a/Makefile[0;0m
-[1;34m+++ b/Makefile[0;0m
+[1;35m--- a/Makefile[0;0m
+[1;35m+++ b/Makefile[0;0m
 [1;35m@@ -52,5 +52,8 @@ dist:[0;0m
  	tar -zcvf ${TARBALL} ${TMPDIR}[0;0m
  	rm -fR ${TMPDIR}[0;0m
@@ -41,8 +41,8 @@
  	rm -f README colordiff.1 colordiff.html cdiff.1[0;0m
 [1;32mdiff --git a/README b/README[0;0m
 [1;32mindex 75205da..830a153 100644[0;0m
-[1;31m--- a/README[0;0m
-[1;34m+++ b/README[0;0m
+[1;35m--- a/README[0;0m
+[1;35m+++ b/README[0;0m
 [1;35m@@ -86,10 +86,3 @@ Bugs[0;0m
  [0;0m
  Bug reports and suggestions/patches to <davee@sungate.co.uk> please.[0;0m
@@ -56,8 +56,8 @@
 [1;31m-[0;0m
 [1;32mdiff --git a/cdiff.xml b/cdiff.xml[0;0m
 [1;32mindex eb747bd..03b613e 100644[0;0m
-[1;31m--- a/cdiff.xml[0;0m
-[1;34m+++ b/cdiff.xml[0;0m
+[1;35m--- a/cdiff.xml[0;0m
+[1;35m+++ b/cdiff.xml[0;0m
 [1;35m@@ -19,7 +19,7 @@[0;0m
          <author>[0;0m
              <firstname>Dave</firstname>[0;0m
@@ -69,8 +69,8 @@
      <productname>cdiff</productname>[0;0m
 [1;32mdiff --git a/colordiff.pl b/colordiff.pl[0;0m
 [1;32mindex 6ace51b..27ea161 100755[0;0m
-[1;31m--- a/colordiff.pl[0;0m
-[1;34m+++ b/colordiff.pl[0;0m
+[1;35m--- a/colordiff.pl[0;0m
+[1;35m+++ b/colordiff.pl[0;0m
 [1;35m@@ -26,10 +26,10 @@ use Getopt::Long qw(:config pass_through);[0;0m
  use IPC::Open2;[0;0m
  [0;0m
@@ -86,8 +86,8 @@
  my $color_patch  = 0;[0;0m
 [1;32mdiff --git a/colordiff.xml b/colordiff.xml[0;0m
 [1;32mindex 795bd0c..e8695ab 100644[0;0m
-[1;31m--- a/colordiff.xml[0;0m
-[1;34m+++ b/colordiff.xml[0;0m
+[1;35m--- a/colordiff.xml[0;0m
+[1;35m+++ b/colordiff.xml[0;0m
 [1;35m@@ -16,6 +16,16 @@[0;0m
              <surname>Ewart</surname>[0;0m
              <contrib>colordiff author and Debian packager</contrib>[0;0m

@@ -1,7 +1,7 @@
 [1;32mdiff --git a/colordiff.pl b/colordiff.pl[0;0m
 [1;32mindex ae9cbd6..a9c4b41 100755[0;0m
-[1;31m--- a/colordiff.pl[0;0m
-[1;34m+++ b/colordiff.pl[0;0m
+[1;35m--- a/colordiff.pl[0;0m
+[1;35m+++ b/colordiff.pl[0;0m
 [1;35m@@ -102,6 +102,25 @@ sub check_for_file_arguments {[0;0m
      return $nonopts;[0;0m
  }[0;0m

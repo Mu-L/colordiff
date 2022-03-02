@@ -1,7 +1,7 @@
 [1;32mIndex: colordiff.pl[0;0m
 [1;32m===================================================================[0;0m
-[1;31m--- colordiff.pl	(revision 80)[0;0m
-[1;34m+++ colordiff.pl	(working copy)[0;0m
+[1;35m--- colordiff.pl	(revision 80)[0;0m
+[1;35m+++ colordiff.pl	(working copy)[0;0m
 [1;35m@@ -3,6 +3,7 @@[0;0m
  # $Id: svn.diff,v 1.1.2.1 2003/03/18 15:08:54 daveewart Exp $[0;0m
  [0;0m

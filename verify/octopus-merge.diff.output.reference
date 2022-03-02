@@ -7,8 +7,8 @@
 [1;37m[0;0m
 [1;32mdiff --cc diff-tree.c[0;0m
 [1;32mindex efa2b9476e,efa2b9476e,99c580cf75,efa2b9476e,44bc2381c9..6593a6920a[0;0m
-[1;31m--- a/diff-tree.c[0;0m
-[1;34m+++ b/diff-tree.c[0;0m
+[1;35m--- a/diff-tree.c[0;0m
+[1;35m+++ b/diff-tree.c[0;0m
 [1;35m@@@@@@ -79,12 -79,12 -82,16 -79,12 -80,12 +83,16 @@@@@@ static const char *generate_header(cons[0;0m
      	offset = sprintf(this_header, "%s%s ",[0;0m
      			 header_prefix,[0;0m

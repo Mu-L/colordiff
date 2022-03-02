@@ -559,14 +559,14 @@ while (defined( $_ = @inputstream ? shift @inputstream : ($lastline and <$inputh
             $inside_file_old = 1;
         }
         elsif (/^\*\*\* /) {
-            print "$file_old";
+            print "$diff_file";
         }
         elsif (/^--- [0-9]+,[0-9]+/) {
             print "$diff_file";
             $inside_file_old = 0;
         }
         elsif (/^--- /) {
-            print "$file_new";
+            print "$diff_file";
         }
         elsif (/^!/) {
             if ($inside_file_old == 1) {
@@ -584,11 +584,8 @@ while (defined( $_ = @inputstream ? shift @inputstream : ($lastline and <$inputh
         }
     }
     elsif ($diff_type eq 'diffu') {
-        if (/^--- /) {
-            print "$file_old";
-        }
-        elsif (/^\+\+\+ /) {
-            print "$file_new";
+        if (/^(---|\+\+\+) /) {
+            print "$diff_file";
         }
         elsif (/^([-\+ ]{$count_marks})/) {
             my $diff_marks = $1;

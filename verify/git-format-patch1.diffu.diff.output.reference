@@ -6,8 +6,8 @@
 [1;37m[0;0m
 [1;32mdiff --git a/cdiff.sh b/cdiff.sh[0;0m
 [1;32mindex 898a2a4..e88bf06 100755[0;0m
-[1;31m--- a/cdiff.sh[0;0m
-[1;34m+++ b/cdiff.sh[0;0m
+[1;35m--- a/cdiff.sh[0;0m
+[1;35m+++ b/cdiff.sh[0;0m
 [1;35m@@ -17,7 +17,7 @@[0;0m
 [1;37m[...][0;0m
 [1;37m[0;0m

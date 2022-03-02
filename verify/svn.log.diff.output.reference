@@ -20,8 +20,8 @@
 [1;37m[0;0m
 [1;32mIndex: lib/AsmParser/LLParser.cpp[0;0m
 [1;32m===================================================================[0;0m
-[1;31m--- lib/AsmParser/LLParser.cpp	(revision 174812)[0;0m
-[1;34m+++ lib/AsmParser/LLParser.cpp	(revision 174813)[0;0m
+[1;35m--- lib/AsmParser/LLParser.cpp	(revision 174812)[0;0m
+[1;35m+++ lib/AsmParser/LLParser.cpp	(revision 174813)[0;0m
 [1;35m@@ -233,7 +233,6 @@[0;0m
      case lltok::GlobalVar:  if (ParseNamedGlobal()) return true; break;[0;0m
      case lltok::exclaim:    if (ParseStandaloneMetadata()) return true; break;[0;0m
@@ -72,8 +72,8 @@
 [1;37m[0;0m
 [1;32mIndex: include/llvm/IR/Attributes.h[0;0m
 [1;32m===================================================================[0;0m
-[1;31m--- include/llvm/IR/Attributes.h	(revision 174811)[0;0m
-[1;34m+++ include/llvm/IR/Attributes.h	(revision 174812)[0;0m
+[1;35m--- include/llvm/IR/Attributes.h	(revision 174811)[0;0m
+[1;35m+++ include/llvm/IR/Attributes.h	(revision 174812)[0;0m
 [1;35m@@ -185,6 +185,26 @@[0;0m
  [0;0m
  //===----------------------------------------------------------------------===//[0;0m

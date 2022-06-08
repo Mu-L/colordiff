@@ -75,7 +75,8 @@ my $color_patch      = undef;
 # Locations for personal and system-wide colour configurations
 my $HOME = (grep { defined && length }
         @ENV{qw/HOME USERPROFILE/})[0] || '';
-my $etcdir = '/etc';
+my $etcdir = (grep { defined && length && -d }
+	'/etc', $ENV{ALLUSERSPROFILE})[0] || '/etc';
 my ($setting, $value);
 my @config_files = ("$etcdir/colordiffrc");
 my $USER_CONFIG_DIR = (grep { defined && length }

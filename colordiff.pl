@@ -26,7 +26,7 @@ use strict;
 use Getopt::Long qw(:config pass_through no_auto_abbrev);
 
 my $app_name     = 'colordiff';
-my $version      = '1.0.20';
+my $version      = '1.0.21';
 my $author       = 'Dave Ewart';
 my $author_email = 'davee@sungate.co.uk';
 my $app_www      = 'http://www.colordiff.org/';
@@ -180,6 +180,7 @@ my $enable_verifymode;
 my $specified_difftype;
 my $enable_fakeexitcode;
 my $color_term_output_only = "no";
+my $cmd_banner;
 
 # Command-line options may over-ride config files
 GetOptions(
@@ -190,7 +191,8 @@ GetOptions(
     "difftype=s" => \$specified_difftype,
     "color=s" => \$cmd_color_mode,
     "color-patches=s" => \$cmd_color_patch,
-    "color-term-output-only=s" => \$color_term_output_only
+    "color-term-output-only=s" => \$color_term_output_only,
+    "banner!" => \$cmd_banner
 );
 
 $_ = $specified_difftype;
@@ -219,7 +221,9 @@ foreach $config_file (@config_files) {
                 next;
             }
             if ($setting eq 'banner') {
-                if ($value eq 'no') {
+                if ($value eq 'yes') {
+                    $show_banner = 1;
+                } elsif ($value eq 'no') {
                     $show_banner = 0;
                 }
                 next;
@@ -363,6 +367,16 @@ if ( (!$color_mode) ||
     $cvs_stuff   = '';
     $plain_text  = '';
     $colour{off} = '';
+}
+
+# If command-line option refers to banner, honour this ahead of config files
+if (defined $cmd_banner) {
+    if ($cmd_banner) {
+        $show_banner = 1;
+    }
+    if (!$cmd_banner) {
+        $show_banner = 0;
+    }
 }
 
 # Disable output buffering. This allows "producer | colordiff | less" to output

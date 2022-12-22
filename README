@@ -81,6 +81,36 @@ colordiff's exit code to be zero: to do this use the option '--fakeexitcode':
 
 colordiff --fakeexitcode ...
 
+Options
+
+colordiff will send most options through to diff, but there are various
+colordiff-specific options which can be used:
+
+--help
+
+    Show these colordiff-specific options
+
+--color=(yes|no)
+
+    Force (or suppress) display of colours in output
+
+--color=patches=(yes|no)
+
+    Force (or suppress) inclusion of colour codes in patch output
+
+--color-term-output-only
+
+    Force colour to only appear in terminal output
+
+--difftype=DIFFTYPE
+
+    Force difftype detection to specified format. DIFFTYPE can be: diff, diffc,
+    diffu, diffy, debdiff, wdiff
+
+--(no)banner
+
+    Show (or suppress) the colordiff banner
+
 Files
 
 /etc/colordiffrc

@@ -181,6 +181,7 @@ my $specified_difftype;
 my $enable_fakeexitcode;
 my $color_term_output_only = "no";
 my $cmd_banner;
+my $cmd_help;
 
 # Command-line options may over-ride config files
 GetOptions(
@@ -192,8 +193,23 @@ GetOptions(
     "color=s" => \$cmd_color_mode,
     "color-patches=s" => \$cmd_color_patch,
     "color-term-output-only=s" => \$color_term_output_only,
+    "help" => \$cmd_help,
     "banner!" => \$cmd_banner
 );
+
+if (defined $cmd_help) {
+    print "colordiff:\n";
+    print "    --help                   : Displays this help\n";
+    print "    --color=(yes|no)         : Force (or suppress) display of colours in output\n";
+    print "    --color=patches=(yes|no) : Force (or suppress) inclusion of colour codes in patch output\n";
+    print "    --color-term-output-only : Force (or suppress) colour to only appear in terminal output\n";
+    print "    --difftype=DIFFTYPE      : Force difftype detection to specified format\n";
+    print "    --(no)banner             : Show (or suppress) the colordiff banner\n";
+    print "\n";
+    print "    DIFFTYPE is usually auto-detected, but can be set to:\n";
+    print "          diff, diffc, diffu, diffy, debdiff or wdiff\n";
+    exit(0);
+}
 
 $_ = $specified_difftype;
 if (defined $_ and not /^diff[cuy]?|(deb|w)diff$/) {

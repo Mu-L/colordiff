@@ -168,6 +168,36 @@ colordiff --fakeexitcode ...
 
 </refsect1>
 
+<refsect1 id='options'><title>Options</title>
+
+<para>colordiff will send most options through to diff, but there are various
+colordiff-specific options which can be used:</para>
+
+<variablelist>
+  <varlistentry>
+  <term><filename>--help</filename></term>
+  <listitem><para>Show these colordiff-specific
+  options</para></listitem></varlistentry>
+  <varlistentry>
+  <term><filename>--color=(yes|no)</filename></term>
+  <listitem><para>Force (or suppress) display of colours in output</para></listitem></varlistentry>
+  <varlistentry>
+  <term><filename>--color=patches=(yes|no)</filename></term>
+  <listitem><para>Force (or suppress) inclusion of colour codes in patch output</para></listitem></varlistentry>
+  <varlistentry>
+  <term><filename>--color-term-output-only</filename></term>
+  <listitem><para>Force colour to only appear in terminal output</para></listitem></varlistentry>
+  <varlistentry>
+  <term><filename>--difftype=DIFFTYPE</filename></term>
+  <listitem><para>Force difftype detection to specified format. DIFFTYPE can be:
+  diff, diffc, diffu, diffy, debdiff, wdiff</para></listitem></varlistentry>
+  <varlistentry>
+  <term><filename>--(no)banner</filename></term>
+  <listitem><para>Show (or suppress) the colordiff banner</para></listitem></varlistentry>
+</variablelist>
+
+</refsect1>
+
 <refsect1 id='files'><title>Files</title>
 
 <variablelist><varlistentry>

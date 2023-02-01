@@ -6,6 +6,8 @@ f22ad8d8dc06094bace9ad8da65cd42c  cvs.diffu.diff.output
 b416b554297053c0ecee241e2d05f813  git.diffu.diff.output
 c2d402802912e5234220bd6d1c15e32d  git-format-patch1.diffu.diff.output
 7d3ac649a5b1e6968a6f170104c20b4e  git-format-patch2.diffu.diff.output
+1cb11b90be4f82fb52a11ad4f72a3c38  no-newline-l.diffy.diff.output
+d7fbaeb037274624656ce28ed9d680bf  no-newline-r.diffy.diff.output
 602de6d12ebefb575be2b05c2060625e  octopus-merge.diff.output
 16d63808c43dc5407efa408e5e4bc867  p4.diff.output
 a5a56a5ed03b324197fedd0d4aa41a6b  p4.diffc.diff.output

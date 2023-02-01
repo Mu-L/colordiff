@@ -497,13 +497,13 @@ if ($diff_type eq 'diffy') {
             next if ($separator_col{$i} == 0);
             next if ($_ =~ /^(Index: |={4,}|RCS file: |retrieving |diff )/);
             my $subsub = substr ($_, $i, 2);
-            if ($subsub !~ / [ (|<>]/) {
+            if ($subsub !~ / [ (|<>\\\/]/) {
                 $separator_col{$i} = 0;
                 if ($candidate_col{$i} > 0) {
                     $possible_cols--;
                 }
             }
-            if ($subsub =~ / [|<>]/) {
+            if ($subsub =~ / [|<>\\\/]/) {
                 $candidate_col{$i}++;
                 if ($candidate_col{$i} == 1) {
                     $possible_cols++;
@@ -650,7 +650,7 @@ while (defined( $_ = @inputstream ? shift @inputstream : ($lastline and <$inputh
             if ($sepchars eq ' <') {
                 print "$file_old";
             }
-            elsif ($sepchars eq ' |') {
+            elsif ($sepchars eq ' |' || $sepchars eq ' /' || $sepchars eq ' \\') {
                 print "$diff_stuff";
             }
             elsif ($sepchars eq ' >') {
